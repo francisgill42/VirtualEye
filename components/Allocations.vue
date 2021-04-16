@@ -89,23 +89,6 @@
 
         </v-col>
 
-                <v-col cols="12" class="pa-5" md="4" sm="12">
-        Guards
-        <v-checkbox 
-        @change="for_guard_ids" 
-        v-model="check_all_guard_ids" 
-        label="Select All"
-        ></v-checkbox>
-
-        <v-checkbox v-for="(item,i) in guards" :key="i"
-        v-model="guard_ids"
-        :label="item.name"
-        :value="item.id"
-        :rules="GeneralRules"
-        ></v-checkbox>
-
-        </v-col>
-
         </v-row>
         <v-col
         cols="12"
@@ -217,11 +200,7 @@
         sortable: true,
         value: 'users',
         },
-        {
-        text: 'guards',
-        sortable: true,
-        value: 'guards',
-        },
+      
          {
           text: 'Action',
           sortable: false,

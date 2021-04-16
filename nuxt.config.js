@@ -83,9 +83,9 @@ export default {
       dark: false,
       themes: {
         light: {
-          primary: '#2d57a3' ,
+          primary: colors.purple.darken4 ,
           accent: colors.grey.darken3,
-          secondary: '#fb8505',
+          secondary: colors.purple,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

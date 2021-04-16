@@ -81,23 +81,6 @@
 
         </v-col>
 
-         <v-col cols="12" class="pa-5" md="3" sm="12">
-        Guards
-        <v-checkbox 
-        @change="for_guard_ids" 
-        v-model="check_all_guard_ids" 
-        label="Select All"
-        ></v-checkbox>
-
-        <v-checkbox v-for="(item,i) in guards" :key="i"
-        v-model="guard_ids"
-        :label="item.name"
-        :value="item.id"
-        :rules="GeneralRules"
-        ></v-checkbox>
-
-        </v-col>
-
         </v-row>
         <v-col
         cols="12"
@@ -139,7 +122,6 @@
         projects : [],
         users : [],
         managers : [],
-        guards : [],
 
         GeneralRules : [
            v => this.guard_ids.length || this.manager_ids.length || this.user_ids.length ? !!v : 'This field is required'
@@ -165,11 +147,7 @@
             .then((res) => {
                 this.projects = res.data;
             });
-            this.$axios.get(`get_users_by_id/${7}`)
-            .then(res => {
-            this.guards = res.data.data;
-            });
-
+           
             this.$axios.get(`get_users_by_id/${5}`)
             .then(res => {
             this.users = res.data.data;
@@ -182,10 +160,6 @@
 
     },
     methods:{
-
-        for_guard_ids(){
-          this.guard_ids = this.check_all_guard_ids ? this.guards.map(v => v.id) : [] ;
-        },
 
          for_user_ids(){
           this.user_ids = this.check_all_user_ids ? this.users.map(v => v.id) : [] ;

@@ -34,26 +34,14 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <!-- <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn> -->
-      <!-- <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn> -->
-      <!-- <v-toolbar-title v-text="title" /> -->
-        <img src="/logo.png" alt="login" style="width:350px">
+     
+    
+        <!-- <img src="/logo.png" alt="login" style="width:75px" height="50px"> -->
+         
+         
+       <span class="primary--text">  Virtual Eye  <v-icon color="primary">mdi-eye</v-icon> 
+         </span>
+         
       <v-spacer />
        <span class="secondary--text">{{Greetings}}</span> 
       <v-btn @click="logout" icon color="secondary">
@@ -111,7 +99,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      text:'wewatch.ae'
+      text:'Varda Solutions'
     }
   },
   created () {
@@ -126,35 +114,22 @@ export default {
         },
         {
           icon: 'mdi-chart-bubble',
-          text:'Project Admin',
-          to: '/project_admin',
-         },
-          {
-          icon: 'mdi-chart-bubble',
           text:'Client',
-          to: '/client'
-        },
+          to: '/client',
+         },
+         
         {
           icon: 'mdi-chart-bubble',
           text:'Project',
           to: '/project'
         },
-       
-         {
-          icon: 'mdi-chart-bubble',
-          text:'wewatch Manager',
-          to: '/wewatchmanager'
-        },
+      
          {
           icon: 'mdi-chart-bubble',
           text:'User',
           to: '/user'
         },
-         {
-          icon: 'mdi-chart-bubble',
-          text:'Security Guards',
-          to: '/security_guard'
-        },
+        
 
        
         {
@@ -162,25 +137,7 @@ export default {
           text:'Allocation',
           to: '/allocations'
         },
-        // {
-        //   icon: 'mdi-chart-bubble',
-        //   text:'HSE',
-        //   to: '/hse',
-        //   external : '',
-        // }
-        // ,
-        // {
-        //   icon: 'mdi-chart-bubble',
-        //   text:'Securtiy',
-        //   to: '/security',
-        //   external : '',
-        // }  
         
-          {
-            icon: 'mdi-chart-bubble',
-            text:'Report',
-            to: '/reports'
-          },
     ];
    
 

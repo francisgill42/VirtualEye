@@ -64,7 +64,7 @@
                       :items="clients" 
                       :rules="ClientRules"
                       required
-                    item-text="name" item-value="id" single-line auto label="Project Admin">
+                    item-text="name" item-value="id" single-line auto label="Client">
                 </v-autocomplete>
           <span style="font-size: 0.875rem; color: red; font-weight: 400;" v-if="errors.user_id" v-text="errors.user_id[0]"></span>                                                          
                     <!-- <v-text-field v-model="editedItem.project_logo" :label="`${entity} Logo`"></v-text-field>
@@ -164,10 +164,10 @@
                   <v-text-field :readonly="isReadOnly" v-model="editedItem.location" :label="`Location`"></v-text-field>
                   <div style="color:red;" v-if="errors.location">{{errors.location[0]}}</div>
                 </v-col>
-                  <v-col cols="6" sm="6" md="6">
+                  <!-- <v-col cols="6" sm="6" md="6">
                   <v-text-field :readonly="isReadOnly" v-model="editedItem.zones" :label="`No of zones you want to create`"></v-text-field>
                   <div style="color:red;" v-if="errors.zones">{{errors.zones[0]}}</div>
-                </v-col>
+                </v-col> -->
                 
               </v-row>
             </v-container>
@@ -223,7 +223,7 @@
       </v-dialog>
     </v-toolbar>
   </template>
-  <template v-slot:item.zones="{item}">
+  <!-- <template v-slot:item.zones="{item}">
       <v-chip v-if="item.zones.length == 0" class="ma-1" color="secondary" small>      
           You dont created zones yet
       </v-chip>
@@ -231,10 +231,8 @@
       <v-chip v-else class="ma-1" color="secondary" small v-for="(zone,i) in item.zones" :key="i" >
           {{zone.zone_name}}
       </v-chip>
-        
-      
-    
     </template>
+     -->
     <template v-slot:item.project_logo="{item}">
     <div class="pa-5" >
     <v-img width="150" :src="item.project_logo" />
@@ -329,7 +327,7 @@ export default {
         value: 'project_logo',
       },
       {
-        text: 'Project Admin',
+        text: 'Client',
         sortable: true,
         value: 'user.name',
       },
@@ -343,16 +341,16 @@ export default {
         sortable: false,
         value: 'end_date',
       },
-      {
-        text: 'Location',
-        sortable: false,
-        value: 'location',
-      } ,
-      {
-        text: 'Zone',
-        sortable: false,
-        value: 'zones',
-      },
+      // {
+      //   text: 'Location',
+      //   sortable: false,
+      //   value: 'location',
+      // } ,
+      // {
+      //   text: 'Zone',
+      //   sortable: false,
+      //   value: 'zones',
+      // },
       
     
       { text: 'Actions', value: 'actions', sortable: false },
@@ -401,8 +399,8 @@ export default {
       return this.$auth.user && this.$auth.user.user_type == 'Super Admin'
     },
 
-    isProjectAdmin () {
-      return this.$auth.user && this.$auth.user.user_type == 'project Admin'
+    isClient () {
+      return this.$auth.user && this.$auth.user.user_type == 'Client'
     },
     isManager () {
       return this.$auth.user && this.$auth.user.user_type == 'Wewatch Manager'
@@ -434,7 +432,7 @@ export default {
           if(this.isManager){
             url = 'projectbymanagerid/' + this.$auth.user.id;
           }
-          else if (this.isProjectAdmin){
+          else if (this.isClient){
             url = 'projectbyuserid/' + this.$auth.user.id;
           }
           else{
@@ -448,7 +446,7 @@ export default {
     },
 
     getClients() {
-      this.$axios.get(`get_users_by_id/2`).then(res => this.clients = res.data.data);
+      this.$axios.get(`get_users_by_id/6`).then(res => this.clients = res.data.data);
     },
 
 
@@ -555,7 +553,7 @@ export default {
           payload.append('location',this.editedItem.location);
           payload.append('start_date',this.editedItem.start_date);
           payload.append('end_date',this.editedItem.end_date);
-          payload.append('zones',this.editedItem.zones);
+          payload.append('zones',1);
           payload.append('project_logo',this.project_logo);
           
             this.$axios.post('project',payload)

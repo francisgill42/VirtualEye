@@ -1,6 +1,6 @@
 <template>
 <div>
-  <User entity="Client" :additional_column="arr" :role_id="6" />
+  <User entity="wewatch Manager" :additional_column="arr" :role_id="4" />
 </div>
 </template>
 
@@ -9,9 +9,9 @@ import User from '@/components/User';
 
 export default {
   components : { User },
-  data : () => ({
-    arr : [ 
-     
+   data : () => ({
+    arr : [
+      
     ]
   })
 }
